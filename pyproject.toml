@@ -1,0 +1,13 @@
+[project]
+name = "learn-ia"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.121.1",
+    "google-genai>=1.49.0",
+    "loguru>=0.7.3",
+    "requests>=2.32.5",
+    "uvicorn>=0.38.0",
+]
