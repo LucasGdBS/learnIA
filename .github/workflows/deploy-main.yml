@@ -8,18 +8,15 @@ on:
 jobs:
   deploy-main:
     runs-on: ubuntu-latest
+    needs: [ci]
+    container: ghcr.io/railwayapp/cli:latest
+    env:
+      SVC_ID: 0c59153b-edea-4c57-b226-826001b344d9
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_MAIN_TOKEN }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Railway CLI
-        run: |
-          curl -fsSL https://railway.app/install.sh | sh
-          echo "$HOME/.railway/bin" >> $GITHUB_PATH
-
-      - name: Authenticate Railway (production)
-        run: railway login --token ${{ secrets.RAILWAY_MAIN_TOKEN }}
-
       - name: Deploy to Production
-        run: railway up --ci
+        run: railway up --service=${{ env.SVC_ID }}
