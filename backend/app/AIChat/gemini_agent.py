@@ -13,19 +13,6 @@ class GeminiAgent(Agent):
             api_key=apiKey
         )
     
-    def _prepare_contents(self, messages):
-        """Converte Message -> formato aceito pelo Gemini."""
-        contents = []
-
-        if self.initial_prompt:
-            contents.append({"role": "system", "parts": [self.initial_prompt]})
-
-        for msg in messages:
-            parts = msg.content if isinstance(msg.content, list) else [msg.content]
-            contents.append({"role": msg.role, "parts": parts})
-
-        return contents
-    
     def chat(self, messages: List[Message]):
         try:
             contents = [
