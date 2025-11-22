@@ -4,7 +4,7 @@ from typing import List
 from app.AIChat.agent_models_enum import AgentModelEnum
 
 class Agent(ABC):
-    def __init__(self, apiKey: str, model: AgentModelEnum,  initial_prompt = None):
+    def __init__(self, apiKey: str, model: AgentModelEnum, initial_prompt = None):
         self.apiKey = apiKey
         self.initial_prompt = initial_prompt
         self.model = model
