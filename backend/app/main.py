@@ -6,7 +6,7 @@ from app.AIChat.agent_models_enum import AgentModelEnum
 
 app = FastAPI()
 
-@app.post("/", tags=["AI Model"])
+@app.post("/ask", tags=["AI Model"])
 async def chat(messages: list[Message], agent: Agent = Depends(get_agent)):
     try:
         response = agent.chat(messages)
