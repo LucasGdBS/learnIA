@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+# LearnIA - Chat com IA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Frontend
 
-Currently, two official plugins are available:
+Interface web para gerenciar API Keys e conversar com modelos de IA.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Funcionalidades
 
-## React Compiler
+#### 1. **Página de API Keys** (`/`)
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- Visualizar API keys salvas localmente
+- Adicionar novas API keys com validação
+- Testar API keys antes de salvar
+- Excluir API keys existentes
+- Suporte a múltiplos modelos de IA
 
-## Expanding the ESLint configuration
+#### 2. **Página de Chat** (`/chat`)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Interface de chat em tempo real
+- Seleção de API key para a conversa
+- Histórico de mensagens na sessão
+- Indicador de "digitando" durante processamento
+- Função para limpar o chat
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Como usar
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. **Configure suas API Keys**:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+   - Acesse a página inicial (`/`)
+   - Clique em "Adicionar Nova API Key"
+   - Preencha o nome, selecione o modelo e cole sua API key
+   - A API key será testada automaticamente antes de salvar
+
+2. **Use o Chat**:
+   - Vá para a página de Chat (`/chat`)
+   - Selecione uma API key configurada
+   - Digite sua mensagem e envie
+   - Veja as respostas em tempo real
+
+### Tecnologias utilizadas
+
+- **React** com TypeScript
+- **React Router DOM** para navegação
+- **Tailwind CSS** para estilização
+- **Vite** como bundler
+- **LocalStorage** para persistência local
+
+### Executar o projeto
+
+```bash
+# Instalar dependências
+npm install
+
+# Executar em modo desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Configuração
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Crie um arquivo `.env` na raiz do frontend:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_API_URL=http://localhost:8000
 ```
+
+### Estrutura do projeto
+
+```bash
+src/
+├── components/         # Componentes reutilizáveis
+│   └── Navigation.tsx
+├── pages/             # Páginas da aplicação
+│   ├── ApiKeysPage.tsx
+│   └── ChatPage.tsx
+├── services/          # Serviços de API e Storage
+│   └── api.ts
+├── types/             # Tipos TypeScript
+│   └── index.ts
+├── App.tsx            # Componente principal
+└── main.tsx           # Entry point
+```
+
+## Notas importantes
+
+- As API keys são armazenadas apenas no navegador (localStorage)
+- Nenhuma informação sensível é enviada para servidores externos
+- A validação da API key é feita diretamente com o provedor
+- O chat não mantém histórico entre sessões
