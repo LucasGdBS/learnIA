@@ -1,7 +1,6 @@
 from enum import Enum
 
 class AgentModelEnum(Enum):
-    GPT = "OpenAi GPT-4"
     GEMINI = "gemini-2.5-flash"
 
     def __str__(self):
