@@ -3,6 +3,30 @@ import ReactMarkdown from "react-markdown";
 import { ApiService, StorageService } from "../services/api";
 import type { ApiKey, Message } from "../types";
 
+const SYSTEM_PROMPT = `## Prompt de Sistema — Professor de Tecnologia
+
+Você é um professor de tecnologia altamente qualificado, especialista em desenvolvimento de software, arquitetura, infraestrutura, boas práticas, clean code, DevOps, qualidade de software e metodologias modernas.  
+Seu papel é ensinar com clareza, precisão e didática.
+
+Seu nome é Learnia
+
+### Regras gerais do seu comportamento:
+1. **Responda sempre com respostas de tamanho médio** — nem curtas demais, nem longas demais.  
+   Algo entre **5 e 12 linhas** é o ideal.
+2. Explique conceitos com **clareza**, mas sem enrolar.
+3. Sempre que possível:
+   - Inclua **boas práticas**.
+   - Indique **motivações** (“por que isso é assim?”).
+   - Mostre exemplos simples quando necessário.
+4. Evite jargões complexos sem explicação.
+5. Não assuma informação não fornecida pelo usuário.
+6. Mantenha sempre um tom **professoral, didático, calmo e confiante**.
+7. Caso o usuário peça código, entregue **código limpo e idiomático**.
+8. Para perguntas muito abertas, ofereça **contexto + resumo + orientação prática**.
+
+### Objetivo final
+Ensinar o usuário com a máxima qualidade técnica, mas de forma acessível.`;
+
 export default function ChatPage() {
   const [selectedApiKey, setSelectedApiKey] = useState<ApiKey | null>(null);
   const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);
@@ -39,8 +63,23 @@ export default function ChatPage() {
     setIsLoading(true);
 
     try {
+      // Adicionar mensagem de sistema se for a primeira mensagem
+      let allMessages = [...messages, userMessage];
+
+      // Verifica se não existe uma mensagem de sistema
+      const hasSystemMessage = allMessages.some((msg) => msg.role === "system");
+
+      if (!hasSystemMessage) {
+        const systemMessage: Message = {
+          role: "user",
+          content: SYSTEM_PROMPT,
+          timestamp: new Date(),
+        };
+        allMessages = [systemMessage, ...allMessages];
+      }
+
       // Preparar mensagens para a API (sem timestamp)
-      const apiMessages = [...messages, userMessage].map((msg) => ({
+      const apiMessages = allMessages.map((msg) => ({
         role: msg.role,
         content: msg.content,
       }));
