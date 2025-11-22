@@ -4,7 +4,7 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from app.dependencies import get_agent
 from app.AIChat.agent_models_enum import AgentModelEnum
-from settings import Settings
+from app.settings import Settings
 
 app = FastAPI()
 

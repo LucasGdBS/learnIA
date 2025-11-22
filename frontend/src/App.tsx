@@ -6,7 +6,7 @@ import ChatPage from "./pages/ChatPage";
 export default function App() {
   return (
     <Router>
-      <div className="flex h-screen bg-gray-50">
+      <div className="flex h-screen bg-[#1e2129]">
         <Sidebar />
         <main className="flex-1 overflow-hidden">
           <Routes>
