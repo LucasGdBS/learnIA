@@ -1,0 +1,25 @@
+name: Deploy Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Railway CLI
+        run: |
+          curl -fsSL https://railway.app/install.sh | sh
+          echo "$HOME/.railway/bin" >> $GITHUB_PATH
+
+      - name: Authenticate Railway (production)
+        run: railway login --token ${{ secrets.RAILWAY_MAIN_TOKEN }}
+
+      - name: Deploy to Production
+        run: railway up --ci
