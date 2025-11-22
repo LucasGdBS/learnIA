@@ -3,12 +3,19 @@ name: CI
 on:
   pull_request:
     branches: ["main", "staging"]
+    paths:
+      - "backend/**"
+      - ".github/workflows/ci-backend.yml"
   push:
     branches: ["*"]
+    paths:
+      - "backend/**"
+      - ".github/workflows/ci-backend.yml"
 
 jobs:
   ci:
     runs-on: ubuntu-latest
+    
 
     steps:
       - name: Checkout
@@ -18,9 +25,11 @@ jobs:
         run: pip install uv
 
       - name: Install dependencies
+        working-directory: backend
         run: uv sync --frozen
 
       - name: Lint
+        working-directory: backend
         run: uvx ruff check .
 
       # - name: Run tests
@@ -28,4 +37,5 @@ jobs:
       # TODO: IMPLEMENTAR TESTES
 
       - name: Docker build
+        working-directory: backend
         run: docker build -t api-ci .
