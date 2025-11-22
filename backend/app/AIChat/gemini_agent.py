@@ -1,7 +1,9 @@
 from google import genai
 from google.genai.types import Content, Part
 from app.AIChat.agent import Agent
+from app.AIChat.message import Message
 from google.genai.errors import ClientError
+from typing import List
 
 
 class GeminiAgent(Agent):
@@ -24,7 +26,7 @@ class GeminiAgent(Agent):
 
         return contents
     
-    def chat(self, messages):
+    def chat(self, messages: List[Message]):
         try:
             contents = [
                 Content(role=msg.gemini_role, parts=[Part.from_text(text=c) for c in msg.content])
