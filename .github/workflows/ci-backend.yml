@@ -1,8 +1,8 @@
-name: CI
+name: CI Backend
 
 on:
   pull_request:
-    branches: ["main", "staging"]
+    branches: [staging, main]
     paths:
       - "backend/**"
       - ".github/workflows/ci-backend.yml"
