@@ -6,7 +6,50 @@ from app.dependencies import get_agent
 from app.AIChat.agent_models_enum import AgentModelEnum
 from app.settings import Settings
 
-app = FastAPI()
+app = FastAPI(
+    title="🧠 LearnIA - API de Chat com IA Professor",
+    description="""
+## 🎓 Sistema de Chat com Inteligência Artificial Educativa
+
+O **LearnIA** é uma API REST moderna que conecta você a modelos de IA especializados em ensino de tecnologia. 
+Nossa IA atua como um professor qualificado, oferecendo explicações didáticas, boas práticas e exemplos práticos.
+
+### ✨ Características Principais
+
+- **🤖 Professor de IA**: Prompt especializado para ensino didático de tecnologia
+- **📚 Respostas Educativas**: Explanações claras com foco em aprendizado
+- **🛠️ Boas Práticas**: Sempre inclui dicas e padrões da indústria
+- **💡 Exemplos Práticos**: Código limpo e idiomático quando necessário
+- **🎯 Tamanho Otimizado**: Respostas concisas (5-12 linhas) mas completas
+
+### 🚀 Modelos Suportados
+
+- **Google Gemini**: Modelo principal para conversas educativas
+- **Expansível**: Arquitetura preparada para novos modelos
+
+### 🔧 Como Usar
+
+1. **Obtenha uma API Key**: Configure sua chave do provedor de IA
+2. **Escolha o Modelo**: Selecione o modelo desejado
+3. **Envie Mensagens**: Faça perguntas sobre tecnologia
+4. **Aprenda**: Receba explicações didáticas e práticas
+
+### 📖 Documentação Completa
+
+Explore todos os endpoints disponíveis abaixo para começar a aprender com nossa IA!
+""",
+    version="1.0.0",
+    tags_metadata=[
+        {
+            "name": "AI Model",
+            "description": "🤖 Endpoints para interação com modelos de IA e gerenciamento de conversas.",
+        },
+        {
+            "name": "Info",
+            "description": "ℹ️ Informações gerais sobre a API e recursos disponíveis.",
+        }
+    ]
+)
 
 # Configurar CORS
 app.add_middleware(
@@ -48,7 +91,7 @@ async def get_system_prompt():
     """
     Retorna o prompt inicial fixo do sistema.
     
-    Use este prompt como primeira mensagem do tipo 'system' ao iniciar uma conversa.
+    Use este prompt como primeira mensagem do tipo 'user' ao iniciar uma conversa.
     """
     
     return {
