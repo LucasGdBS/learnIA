@@ -1,6 +1,7 @@
 from google import genai
 from google.genai.types import Content, Part
 from app.AIChat.agent import Agent
+from google.genai.errors import ClientError
 
 
 class GeminiAgent(Agent):
@@ -24,14 +25,17 @@ class GeminiAgent(Agent):
         return contents
     
     def chat(self, messages):
-        contents = [
-            Content(role=msg.gemini_role, parts=[Part.from_text(text=c) for c in msg.content])
-            for msg in messages
-        ]
+        try:
+            contents = [
+                Content(role=msg.gemini_role, parts=[Part.from_text(text=c) for c in msg.content])
+                for msg in messages
+            ]
 
-        response = self.client.models.generate_content(
-            model=self.model.value,
-            contents=contents
-        )
+            response = self.client.models.generate_content(
+                model=self.model.value,
+                contents=contents
+            )
 
-        return response.text
+            return response.text
+        except ClientError:
+            raise

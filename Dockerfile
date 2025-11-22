@@ -4,20 +4,22 @@ RUN pip install --no-cache-dir uv
 
 WORKDIR /app
 
-COPY pyproject.toml ./
+COPY pyproject.toml uv.lock* ./
 
 RUN uv sync --frozen --no-dev
 
 COPY . .
 
-FROM pyton:3.14-slim
+FROM python:3.14-slim
 
 RUN pip install --no-cache-dir uv
 
 WORKDIR /app
 
-COPY --form=builder /app /app
+COPY --from=builder /app /app
+
+ENV PORT=8000
 
 EXPOSE 8000
 
-CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers"]

@@ -11,5 +11,5 @@ class AgentFactory:
     def create(cls, model: AgentModelEnum, apiKey: str):
         agent_class = cls._registry.get(model)
         if not agent_class:
-            raise ValueError(f"{model.value} não é suportado")
+            raise NotImplementedError(f"Modelo {model.value} ainda não é suportado")
         return agent_class(apiKey=apiKey, model=model)
