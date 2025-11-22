@@ -86,6 +86,7 @@ export default function ApiKeysPage() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="h-full overflow-y-auto bg-[#1e2129] p-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
@@ -93,6 +94,15 @@ export default function ApiKeysPage() {
             Gerenciar API Keys
           </h1>
           <p className="text-white opacity-70">
+=======
+    <div className="h-full overflow-y-auto bg-gray-50 p-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Gerenciar API Keys
+          </h1>
+          <p className="text-gray-600">
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
             Adicione e gerencie suas chaves de API para diferentes modelos de IA
           </p>
         </div>
@@ -100,22 +110,35 @@ export default function ApiKeysPage() {
         <div className="mb-6">
           <button
             onClick={() => setShowForm(!showForm)}
+<<<<<<< HEAD
             className="bg-[#009485] hover:bg-[#007a6e] text-white font-medium py-2 px-4 rounded-lg transition-colors"
+=======
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
           >
             {showForm ? "Cancelar" : "Adicionar Nova API Key"}
           </button>
         </div>
 
         {showForm && (
+<<<<<<< HEAD
           <div className="bg-[#2a2d38] rounded-lg shadow-md p-6 mb-8">
             <h2 className="text-xl font-semibold mb-4 text-white">
               Nova API Key
             </h2>
+=======
+          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 className="text-xl font-semibold mb-4">Nova API Key</h2>
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
                   htmlFor="name"
+<<<<<<< HEAD
                   className="block text-sm font-medium text-white mb-1"
+=======
+                  className="block text-sm font-medium text-gray-700 mb-1"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                 >
                   Nome da Configuração
                 </label>
@@ -126,7 +149,11 @@ export default function ApiKeysPage() {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, name: e.target.value }))
                   }
+<<<<<<< HEAD
                   className="w-full px-3 py-2 bg-[#006e63] border border-[#009485] rounded-md focus:outline-none focus:ring-2 focus:ring-[#009485] text-white placeholder-gray-300"
+=======
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                   placeholder="Ex: Minha chave do Gemini"
                   required
                 />
@@ -135,7 +162,11 @@ export default function ApiKeysPage() {
               <div>
                 <label
                   htmlFor="model"
+<<<<<<< HEAD
                   className="block text-sm font-medium text-white mb-1"
+=======
+                  className="block text-sm font-medium text-gray-700 mb-1"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                 >
                   Modelo
                 </label>
@@ -145,7 +176,11 @@ export default function ApiKeysPage() {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, model: e.target.value }))
                   }
+<<<<<<< HEAD
                   className="w-full px-3 py-2 bg-[#006e63] border border-[#009485] rounded-md focus:outline-none focus:ring-2 focus:ring-[#009485] text-white"
+=======
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                   required
                 >
                   {availableModels.map((model) => (
@@ -159,7 +194,11 @@ export default function ApiKeysPage() {
               <div>
                 <label
                   htmlFor="apiKey"
+<<<<<<< HEAD
                   className="block text-sm font-medium text-white mb-1"
+=======
+                  className="block text-sm font-medium text-gray-700 mb-1"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                 >
                   API Key
                 </label>
@@ -170,7 +209,11 @@ export default function ApiKeysPage() {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, apiKey: e.target.value }))
                   }
+<<<<<<< HEAD
                   className="w-full px-3 py-2 bg-[#006e63] border border-[#009485] rounded-md focus:outline-none focus:ring-2 focus:ring-[#009485] text-white placeholder-gray-300"
+=======
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                   placeholder="Sua API key"
                   required
                 />
@@ -180,14 +223,22 @@ export default function ApiKeysPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
+<<<<<<< HEAD
                   className="bg-[#009485] hover:bg-[#007a6e] disabled:bg-gray-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
+=======
+                  className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-medium py-2 px-4 rounded-md transition-colors"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                 >
                   {isLoading ? "Testando..." : "Salvar API Key"}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
+<<<<<<< HEAD
                   className="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+=======
+                  className="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                 >
                   Cancelar
                 </button>
@@ -196,6 +247,7 @@ export default function ApiKeysPage() {
           </div>
         )}
 
+<<<<<<< HEAD
         <div className="bg-[#2a2d38] rounded-lg shadow-md">
           <div className="p-6 border-b border-[#3a3d48]">
             <h2 className="text-xl font-semibold text-white">
@@ -205,6 +257,15 @@ export default function ApiKeysPage() {
           <div className="divide-y divide-[#3a3d48]">
             {apiKeys.length === 0 ? (
               <div className="p-6 text-center text-white opacity-70">
+=======
+        <div className="bg-white rounded-lg shadow-md">
+          <div className="p-6 border-b border-gray-200">
+            <h2 className="text-xl font-semibold">API Keys Salvas</h2>
+          </div>
+          <div className="divide-y divide-gray-200">
+            {apiKeys.length === 0 ? (
+              <div className="p-6 text-center text-gray-500">
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                 Nenhuma API key configurada ainda.
               </div>
             ) : (
@@ -214,21 +275,37 @@ export default function ApiKeysPage() {
                   className="p-6 flex items-center justify-between"
                 >
                   <div>
+<<<<<<< HEAD
                     <h3 className="font-medium text-white">{apiKey.name}</h3>
                     <p className="text-sm text-white opacity-70">
                       Modelo: {apiKey.model}
                     </p>
                     <p className="text-xs text-white opacity-50">
+=======
+                    <h3 className="font-medium text-gray-900">{apiKey.name}</h3>
+                    <p className="text-sm text-gray-600">
+                      Modelo: {apiKey.model}
+                    </p>
+                    <p className="text-xs text-gray-500">
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                       Criado em: {apiKey.createdAt.toLocaleDateString("pt-BR")}
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
+<<<<<<< HEAD
                     <div className="text-sm text-white opacity-50">
+=======
+                    <div className="text-sm text-gray-500">
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                       ••••••••{apiKey.apiKey.slice(-4)}
                     </div>
                     <button
                       onClick={() => handleDelete(apiKey.id)}
+<<<<<<< HEAD
                       className="text-red-400 hover:text-red-300 font-medium text-sm transition-colors"
+=======
+                      className="text-red-600 hover:text-red-800 font-medium text-sm transition-colors"
+>>>>>>> f93cb51d22004d7c1a150af41159423b57038f01
                     >
                       Excluir
                     </button>
