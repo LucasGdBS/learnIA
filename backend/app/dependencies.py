@@ -3,7 +3,7 @@ from fastapi import Query, Body, HTTPException, status
 from app.AIChat.agent_factory import AgentFactory
 
 def get_agent(
-        model: AgentModelEnum = Query(..., description="Model de IA a ser usado"),
+        model: AgentModelEnum = Query(..., description="Modelo de IA a ser usado"),
         apiKey: str = Body(..., description="API Key do provedor")
 ):
     try:
